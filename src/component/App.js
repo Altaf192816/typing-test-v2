@@ -11,7 +11,7 @@ function App() {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setISOpen] = useState(false);
-  console.log("Welcome Altaf");
+
   useEffect(
     function () {
       const controller = new AbortController();
