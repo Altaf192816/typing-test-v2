@@ -35,6 +35,7 @@ function App() {
             .replaceAll(")", "")
             .replaceAll('"', "")
             .replaceAll("  ", " ");
+            
           setContent(sentence);
         } catch (err) {
           if (err.name !== "AbortError") {
@@ -140,24 +141,25 @@ function Main({ content, setISOpen }) {
     setInput(e.target.value.toLowerCase());
     setNewContent(e.target.value.toLowerCase());
   };
-
-  useEffect(
-    function () {
-      const tick = () => {
-        setTimer((t) => t - 1);
-      };
-      const timerFunc = setInterval(tick, 1000);
-      if (timer === 0) {
-        clearInterval(timerFunc);
-        setCorrectWordArr(
-          input.split(" ").filter((word, i) => word === content.split(" ")[i])
-        );
-        setIsDisable(true);
-      }
-      return () => clearInterval(timerFunc);
-    },
-    [timer, content]
-  );
+  
+//!Causing error
+  // useEffect(
+  //   function () {
+  //     const tick = () => {
+  //       setTimer((t) => t - 1);
+  //     };
+  //     const timerFunc = setInterval(tick, 1000);
+  //     if (timer === 0) {
+  //       clearInterval(timerFunc);
+  //       setCorrectWordArr(
+  //         input.split(" ").filter((word, i) => word === content.split(" ")[i])
+  //       );
+  //       setIsDisable(true);
+  //     }
+  //     return () => clearInterval(timerFunc);
+  //   },
+  //   [timer, content]
+  // );
 
   return (
     <div className="text-center w-[100vw] flex flex-col gap-6 mt-4 md:gap-8 md:mt-4 lg:mt-8 xl:gap-16">
