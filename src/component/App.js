@@ -11,6 +11,8 @@ function App() {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setISOpen] = useState(false);
+  const [user,Setuser] = useState("");
+  const [time,setTime] = useState(60);
 
   useEffect(
     function () {
