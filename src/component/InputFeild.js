@@ -1,4 +1,4 @@
-export function InputFeild({ isDisable, input, handleInput }) {
+export function InputFeild({ isDisable, input, handleInput ,inputEl}) {
   return (
     <div className="text-black">
       <input
@@ -7,9 +7,10 @@ export function InputFeild({ isDisable, input, handleInput }) {
         autoFocus
         type="text"
         placeholder="Write here..."
-        className="border-[#696969] border-[1px] w-[90vw] rounded-lg px-2 shadow-xl lg:opacity-0  xl:py-2"
+        className="opacity-0"
         value={input}
-        onChange={handleInput} />
+        onChange={handleInput}
+        ref={inputEl} />
     </div>
   );
 }

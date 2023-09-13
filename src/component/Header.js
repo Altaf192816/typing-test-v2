@@ -35,18 +35,20 @@ export function Header() {
           Instrution
         </li>
       </ul>
+
       <div
-        className={`text-white absolute bg-[#696969] w-[100vw] z-10 ${openAbout ? "opacity-100" : "opacity-0"} transition-opacity duration-500 ease-in`}
+        className={`text-white text-center absolute bg-[#696969] w-[100vw] z-10 ${openAbout ? "block opacity-100" : "opacity-0 hidden"} transition-opacity duration-500 ease-in`}
       >
         This WebApp is created by Altaf using React and Tailwindcss
       </div>
       <div
-        className={`text-white absolute bg-[#696969] w-[100vw] z-10 ${openInstruc ? "opacity-100" : "opacity-0"} transition-opacity duration-500 ease-in`}
+        className={`text-white text-center absolute bg-[#696969] w-[100vw] z-10 ${openInstruc ? "opacity-100 block" : "opacity-0 hidden"} transition-opacity duration-500 ease-in`}
       >
-        <p>1:-You have 60 sec to type</p>
-        <p>2:-Start the game using Start button below</p>
-        <p>3:-After 60sec you can see your result</p>
-        <p>4:-Click on Reset button to play again</p>
+        <p>1:-Enter you name, select difficulty, click on "Start" button and type.</p>
+        <p>2:-If you unable to type tap on the content on the screen.</p>
+        <p>3:-After time up you can see your result.</p>
+        <p>4:-If you want to save your score click on "Save Score" and reload to skip saving score.</p>
+        <p>5:-Click on X to delete score permantly.</p>
       </div>
     </div>
   );

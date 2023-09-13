@@ -1,19 +1,10 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { Heading } from "./Heading";
 import { Result } from "./Result";
 import { Timer } from "./Timer";
 import { Content } from "./Content";
 import { InputFeild } from "./InputFeild";
 import { Button } from "./Button";
-
-const time = 60;
-
-const initialState = {
-  input: "",
-  timer: time,
-  correctWordArr: [],
-  isDisable: false,
-};
 
 function reducer(state, action) {
   switch (action.type) {
@@ -37,14 +28,37 @@ function reducer(state, action) {
   }
 }
 
-export function Main({ content, setISOpen }) {
+export function Main({
+  content,
+  setISOpen,
+  setScore,
+  time,
+  user,
+  difficulty,
+  setScoreList,
+  score,
+}) {
   const [newContent, setNewContent] = useState("");
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { input, timer, correctWordArr, isDisable } = state;
+  const inputEl = useRef(null);
+  const [{ input, timer, correctWordArr, isDisable }, dispatch] = useReducer(
+    reducer,
+    {
+      input: "",
+      timer: time,
+      correctWordArr: [],
+      isDisable: false,
+    }
+  );
 
   const handleInput = function (e) {
     dispatch({ type: "input", payload: e.target.value.toLowerCase() });
     setNewContent(e.target.value.toLowerCase());
+  };
+
+  const handleAddScore = function () {
+    setISOpen((is) => !is);
+    setScoreList((arr) => [...arr, score]);
+    setScore({});
   };
 
   useEffect(
@@ -65,14 +79,23 @@ export function Main({ content, setISOpen }) {
   return (
     <div className="text-center w-[100vw] flex flex-col gap-6 mt-4 md:gap-8 md:mt-4 lg:mt-8 xl:gap-16">
       <Heading />
-      <Result correctWordArr={correctWordArr} input={input} />
+      <Result
+        correctWordArr={correctWordArr}
+        input={input}
+        setScore={setScore}
+        user={user}
+        difficulty={difficulty}
+        time={time}
+      />
       <Timer timer={timer} />
-      <Content newContent={newContent} content={content} />
+      <Content newContent={newContent} content={content} inputEl = {inputEl}/>
+      {timer === 0 && <Button onClick={handleAddScore}>⬅️Save Score</Button>}
       <InputFeild
         isDisable={isDisable}
         handleInput={handleInput}
-        input={input} />
-      <Button setISOpen={setISOpen}>⬅️Back</Button>
+        input={input}
+        inputEl = {inputEl}
+      />
     </div>
   );
 }
