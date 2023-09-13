@@ -12,14 +12,16 @@ function HomePage({
   return (
     <div className="w-[100%] h-[100%] flex flex-col gap-10 ">
       <div className="flex flex-col gap-6 items-center lg:gap-8">
-        <input
-          name="name"
-          placeholder="Name"
-          type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-          className="text-black px-2 py-1 rounded-lg shadow-lg"
-        />
+        <div className="flex gap-2 items-center">
+          <p className="font-bold drop-shadow-lg">Name</p>
+          <input
+            name="name"
+            type="text"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+            className="text-black px-2 py-1 rounded-lg shadow-lg"
+          />
+        </div>
         <div className="flex gap-2 items-center">
           <p className="font-bold drop-shadow-lg">Difficulty</p>
           <select
@@ -32,11 +34,11 @@ function HomePage({
             <option value="180">Hard(180min)</option>
           </select>
         </div>
-      {user ? (
-        <Button onClick={() => setISOpen((is) => !is)}>Start➡️</Button>
-      ) : (
-        <Button>Start➡️</Button>
-      )}
+        {user ? (
+          <Button onClick={() => setISOpen((is) => !is)}>Start➡️</Button>
+        ) : (
+          <Button>Start➡️</Button>
+        )}
       </div>
 
       <div className="bg-[#696969] h-[30vh] overflow-auto rounded-lg">
