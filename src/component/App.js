@@ -16,7 +16,7 @@ function App() {
   const [scoreList, setScoreList] = useLocalStorage([],"TypingScores");
   const [user, setUser] = useState("");
   const [time, setTime] = useState(60);
-  console.log("hello")
+ 
   let difficulty = "";
   switch (time) {
     case 60:
